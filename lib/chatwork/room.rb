@@ -1,25 +1,25 @@
 module Chatwork
   class Room < Base
-    ACTION_LEAVE = 'leave'
-    ACTION_DELETE = 'delete'
+    ACTION_LEAVE = 'leave'.freeze
+    ACTION_DELETE = 'delete'.freeze
 
-    ICON_GROUP = 'group'
-    ICON_CHECK = 'check'
-    ICON_DOCUMENT = 'document'
-    ICON_MEETING = 'meeting'
-    ICON_EVENT = 'event'
-    ICON_PROJECT = 'project'
-    ICON_BUSINESS = 'business'
-    ICON_STUDY = 'study'
-    ICON_SECURITY = 'security'
-    ICON_STAR = 'star'
-    ICON_IDEA = 'idea'
-    ICON_HEART = 'heart'
-    ICON_MAGCUP = 'magcup'
-    ICON_BEER = 'beer'
-    ICON_MUSIC = 'music'
-    ICON_SPORTS = 'sports'
-    ICON_TRAVEL = 'travel'
+    ICON_GROUP = 'group'.freeze
+    ICON_CHECK = 'check'.freeze
+    ICON_DOCUMENT = 'document'.freeze
+    ICON_MEETING = 'meeting'.freeze
+    ICON_EVENT = 'event'.freeze
+    ICON_PROJECT = 'project'.freeze
+    ICON_BUSINESS = 'business'.freeze
+    ICON_STUDY = 'study'.freeze
+    ICON_SECURITY = 'security'.freeze
+    ICON_STAR = 'star'.freeze
+    ICON_IDEA = 'idea'.freeze
+    ICON_HEART = 'heart'.freeze
+    ICON_MAGCUP = 'magcup'.freeze
+    ICON_BEER = 'beer'.freeze
+    ICON_MUSIC = 'music'.freeze
+    ICON_SPORTS = 'sports'.freeze
+    ICON_TRAVEL = 'travel'.freeze
 
     self.collection_name = 'rooms'
     self.primary_key = 'room_id'
@@ -29,7 +29,7 @@ module Chatwork
     end
 
     def message(pk)
-      Message.find(pk, params: subroute_params())
+      Message.find(pk, params: subroute_params)
     end
 
     def members(params = {})
@@ -41,7 +41,7 @@ module Chatwork
     end
 
     def file(pk)
-      File.find(pk, params: subroute_params())
+      File.find(pk, params: subroute_params)
     end
 
     def tasks(params = {})
@@ -49,13 +49,13 @@ module Chatwork
     end
 
     def task(pk)
-      Task.find(pk, params: subroute_params())
+      Task.find(pk, params: subroute_params)
     end
 
     private
 
     def subroute_params(additional = {})
-      {:room_id => self.room_id}.merge(additional)
+      { room_id: room_id }.merge(additional)
     end
   end
 end
