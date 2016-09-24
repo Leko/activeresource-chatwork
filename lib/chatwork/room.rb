@@ -23,7 +23,7 @@ module Chatwork
     ICON_SPORTS = 'sports'.freeze
     ICON_TRAVEL = 'travel'.freeze
 
-    has_many :members, :class_name => 'chatwork/member'
+    has_many :members, class_name: 'chatwork/member'
 
     self.collection_name = 'rooms'
     self.primary_key = 'room_id'
