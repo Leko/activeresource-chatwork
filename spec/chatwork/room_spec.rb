@@ -36,7 +36,7 @@ describe Chatwork::Room do
   it '#message() can retrieve message according to chatroom' do
     room = Chatwork::Room.find(ENV['CHATWORK_MYCHAT_ID'])
     message = room.messages(force: 1).first
-    expect(room.message(message.message_id)).to be_instance_of Chatwork::Message
+    expect(room.message(message.id)).to be_instance_of Chatwork::Message
   end
 
   it '#members() can list members according to chatroom' do
@@ -52,7 +52,7 @@ describe Chatwork::Room do
   it '#file() can retrieve file according to chatroom' do
     room = Chatwork::Room.find(ENV['CHATWORK_MYCHAT_ID'])
     file = room.files().first
-    expect(room.file(file.file_id)).to be_instance_of Chatwork::File
+    expect(room.file(file.id)).to be_instance_of Chatwork::File
   end
 
   it '#tasks() can list tasks according to chatroom' do
@@ -63,6 +63,6 @@ describe Chatwork::Room do
   it '#task() can retrieve task according to chatroom' do
     room = Chatwork::Room.find(ENV['CHATWORK_MYCHAT_ID'])
     task = room.tasks().first
-    expect(room.task(task.task_id)).to be_instance_of Chatwork::Task
+    expect(room.task(task.id)).to be_instance_of Chatwork::Task
   end
 end
