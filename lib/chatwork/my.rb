@@ -8,7 +8,7 @@ module Chatwork
     end
 
     def self.tasks(params = {})
-      get(:tasks, params).map {|t| Chatwork::Task.new(t, true)}
+      get(:tasks, params).map { |t| Chatwork::Task.new(t, true) }
     end
   end
 end
