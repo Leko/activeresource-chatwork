@@ -33,7 +33,6 @@ module Chatwork
     self.format = FormToJsonParser.new
     self.include_format_in_path = false
 
-    # FIXME: jsonをパースせずに自分自身のインスタンスをurl encodedされたbodyにする方法
     def to_json(options = {})
       json = if include_root_in_json
                super({ root: self.class.element_name }.merge(options))
