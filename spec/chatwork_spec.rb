@@ -5,6 +5,10 @@ describe Chatwork do
     expect(Chatwork::VERSION).not_to be nil
   end
 
+  it 'has autoload about Chatwork::Base' do
+    expect(Chatwork::Base).not_to be nil
+  end
+
   it 'has autoload about Chatwork::Room' do
     expect(Chatwork::Room).not_to be nil
   end

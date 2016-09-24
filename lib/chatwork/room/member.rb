@@ -1,9 +1,9 @@
 
 module Chatwork
   module Room
-    class Member < Base
+    class Member < Chatwork::Base
       self.prefix = '/rooms/:room_id/'
-      self.collection = 'members'
+      self.collection_name = 'members'
     end
   end
 end
