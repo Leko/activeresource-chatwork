@@ -1,6 +1,7 @@
 # activeresource-chatwork
 [![CircleCI](https://circleci.com/gh/Leko/activeresource-chatwork/tree/master.svg?style=svg)](https://circleci.com/gh/Leko/activeresource-chatwork/tree/master)
 [![codecov](https://codecov.io/gh/Leko/activeresource-chatwork/branch/master/graph/badge.svg)](https://codecov.io/gh/Leko/activeresource-chatwork)
+[![Gem Version](https://badge.fury.io/rb/activeresource-chatwork.svg)](https://badge.fury.io/rb/activeresource-chatwork)
 
 ActiveResource classes for Chatwork API
 
