@@ -24,7 +24,7 @@ describe Chatwork::Room do
   end
 
   it 'can update room members according to chatroom' do
-    expect(room.put(:members, members_admin_ids: [ENV['CHATWORK_MY_ID']].join(','))).to be_instance_of Net::HTTPOK
+    expect(room.update_members(members_admin_ids: [ENV['CHATWORK_MY_ID']].join(','))).to be_instance_of Net::HTTPOK
   end
 
   it 'can delete room according to chatroom' do

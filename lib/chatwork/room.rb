@@ -36,6 +36,10 @@ module Chatwork
       Member.all(params: subroute_params(params))
     end
 
+    def update_members(params = {})
+      put(:members, params)
+    end
+
     def files(params = {})
       File.all(params: subroute_params(params))
     end
