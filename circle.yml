@@ -1,4 +1,16 @@
+dependencies:
+  override:
+    - ./bin/setup
+
 test:
   override:
     - bundle exec rubocop
-    - bundle exec rspec
+    - bundle exec rake spec
+
+deployment:
+  rubygems:
+    branch: master
+    commands:
+      - curl -u Leko:$RUBYGEMS_PASSWORD https://rubygems.org/api/v1/api_key.yaml > ~/.gem/credentials; chmod 0600 ~/.gem/credentials
+      - bundle exec rake build
+      - bundle exec rake release
