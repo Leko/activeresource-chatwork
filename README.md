@@ -1,4 +1,6 @@
 # activeresource-chatwork
+[![CircleCI](https://circleci.com/gh/Leko/activeresource-chatwork/tree/master.svg?style=svg)](https://circleci.com/gh/Leko/activeresource-chatwork/tree/master)
+
 ActiveResource classes for Chatwork API
 
 ## Installation
