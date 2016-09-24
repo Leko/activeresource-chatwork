@@ -9,3 +9,10 @@ SimpleCov.start do
   add_filter "/vendor/"
   add_filter "/spec/"
 end
+
+# テスト用にロガーを差し込む
+module Chatwork
+  class Base
+    self.logger = Logger.new(STDERR)
+  end
+end
