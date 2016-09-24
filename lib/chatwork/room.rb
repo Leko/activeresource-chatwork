@@ -23,6 +23,8 @@ module Chatwork
     ICON_SPORTS = 'sports'.freeze
     ICON_TRAVEL = 'travel'.freeze
 
+    has_many :members, class_name: 'chatwork/member'
+
     self.collection_name = 'rooms'
     self.primary_key = 'room_id'
 
@@ -32,10 +34,6 @@ module Chatwork
 
     def message(pk)
       Message.find(pk, params: subroute_params)
-    end
-
-    def members(params = {})
-      Member.all(params: subroute_params(params))
     end
 
     def update_members(params = {})
