@@ -25,7 +25,7 @@ module Chatwork
     self.primary_key = 'room_id'
 
     def messages(params = {})
-      Message.find(:all, params: subroute_params(params))
+      Message.all(params: subroute_params(params))
     end
 
     def message(pk)
@@ -33,11 +33,11 @@ module Chatwork
     end
 
     def members(params = {})
-      Member.find(:all, params: subroute_params(params))
+      Member.all(params: subroute_params(params))
     end
 
     def files(params = {})
-      File.find(:all, params: subroute_params(params))
+      File.all(params: subroute_params(params))
     end
 
     def file(pk)
@@ -45,7 +45,7 @@ module Chatwork
     end
 
     def tasks(params = {})
-      Task.find(:all, params: subroute_params(params))
+      Task.all(params: subroute_params(params))
     end
 
     def task(pk)
