@@ -3,13 +3,14 @@ require 'spec_helper'
 describe Chatwork::Message do
   it 'can list messages according to chatroom' do
     params = {params: {force: 1, room_id: ENV['CHATWORK_MYCHAT_ID']}}
-    files = Chatwork::Message.all(params)
-    expect(files.all? {|f| f.is_a? Chatwork::Message}).to be true
+    messages = Chatwork::Message.all(params)
+    expect(messages.all? {|m| m.is_a? Chatwork::Message}).to be true
   end
 
   it 'can retrieve message from chatroom' do
     params = {params: {force: 1, room_id: ENV['CHATWORK_MYCHAT_ID']}}
-    message = Chatwork::Message.find(Chatwork::Message.first(params), params)
+    message = Chatwork::Message.find(Chatwork::Message.first(params).id, params)
+
     expect(message).to be_instance_of Chatwork::Message
   end
 
