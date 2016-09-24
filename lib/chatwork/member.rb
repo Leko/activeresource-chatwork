@@ -1,5 +1,7 @@
 
 module Chatwork
+  # /rooms/xxx/members
+  # see http://developer.chatwork.com/ja/endpoint_rooms.html
   class Member < Base
     include Chatwork::NestOfRoom
 

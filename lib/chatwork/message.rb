@@ -1,5 +1,7 @@
 
 module Chatwork
+  # /rooms/xxx/messages
+  # see http://developer.chatwork.com/ja/endpoint_rooms.html
   class Message < Base
     include Chatwork::NestOfRoom
 
