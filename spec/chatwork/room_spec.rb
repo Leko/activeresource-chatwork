@@ -9,11 +9,16 @@ describe Chatwork::Room do
   end
 
   it 'can retrieve room from chatroom' do
-    expect(Chatwork::Room.find(ENV['CHATWORK_MYCHAT_ID'])).to be_instance_of Chatwork::Room
+    room = Chatwork::Room.find(ENV['CHATWORK_MYCHAT_ID'])
+    expect(room).to be_instance_of Chatwork::Room
   end
 
   it 'can create room to chatroom via .create' do
-    opts = { members_admin_ids: [ENV['CHATWORK_MY_ID']], name: 'xxx', icon_preset: Chatwork::Room::ICON_GROUP }
+    opts = {
+      name: 'xxx',
+      members_admin_ids: [ENV['CHATWORK_MY_ID']],
+      icon_preset: Chatwork::Room::ICON_GROUP
+    }
     room = Chatwork::Room.create(opts)
     expect(room).to be_instance_of Chatwork::Room
   end
@@ -24,17 +29,20 @@ describe Chatwork::Room do
   end
 
   it 'can update room members according to chatroom' do
-    expect(room.update_members(members_admin_ids: [ENV['CHATWORK_MY_ID']].join(','))).to be_instance_of Net::HTTPOK
+    params = { members_admin_ids: [ENV['CHATWORK_MY_ID']].join(',') }
+    expect(room.update_members(params)).to be_instance_of Net::HTTPOK
   end
 
   it 'can delete room according to chatroom' do
-    result = Chatwork::Room.delete(room.id, action_type: Chatwork::Room::ACTION_DELETE)
+    params = { action_type: Chatwork::Room::ACTION_DELETE }
+    result = Chatwork::Room.delete(room.id, params)
     expect(result).to be_instance_of Net::HTTPNoContent
   end
 
   it '#messages() can list messages according to chatroom' do
     room = Chatwork::Room.find(ENV['CHATWORK_MYCHAT_ID'])
-    expect(room.messages(force: 1).all? { |m| m.is_a? Chatwork::Message }).to be true
+    messages = room.messages(force: 1)
+    expect(messages.all? { |m| m.is_a? Chatwork::Message }).to be true
   end
 
   it '#message() can retrieve message according to chatroom' do
