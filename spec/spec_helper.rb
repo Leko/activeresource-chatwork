@@ -3,6 +3,8 @@ require 'chatwork'
 require 'dotenv'
 require 'simplecov'
 
+Dotenv.load
+
 SimpleCov.start do
   add_filter "/vendor/"
   add_filter "/spec/"

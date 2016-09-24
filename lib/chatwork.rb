@@ -1,7 +1,10 @@
 require 'chatwork/version'
 
 module Chatwork
+  autoload :Base, 'chatwork/base'
+  autoload :Room, 'chatwork/room'
+  autoload :Message, 'chatwork/message'
+  autoload :Member, 'chatwork/member'
+  autoload :Task, 'chatwork/task'
+  autoload :File, 'chatwork/file'
 end
-
-Chatwork.autoload :Base, 'chatwork/base'
-Chatwork.autoload :Room, 'chatwork/room'
