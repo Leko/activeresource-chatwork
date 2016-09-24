@@ -23,5 +23,39 @@ module Chatwork
 
     self.collection_name = 'rooms'
     self.primary_key = 'room_id'
+
+    def messages(params = {})
+      Message.find(:all, params: subroute_params(params))
+    end
+
+    def message(pk)
+      Message.find(pk, params: subroute_params())
+    end
+
+    def members(params = {})
+      Member.find(:all, params: subroute_params(params))
+    end
+
+    def files(params = {})
+      File.find(:all, params: subroute_params(params))
+    end
+
+    def file(pk)
+      File.find(pk, params: subroute_params())
+    end
+
+    def tasks(params = {})
+      Task.find(:all, params: subroute_params(params))
+    end
+
+    def task(pk)
+      Task.find(pk, params: subroute_params())
+    end
+
+    private
+
+    def subroute_params(additional = {})
+      {:room_id => self.room_id}.merge(additional)
+    end
   end
 end

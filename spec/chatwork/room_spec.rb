@@ -27,4 +27,42 @@ describe Chatwork::Room do
     result = Chatwork::Room.delete(room.id, action_type: Chatwork::Room::ACTION_DELETE)
     expect(result).to be_instance_of Net::HTTPNoContent
   end
+
+  it '#messages() can list messages according to chatroom' do
+    room = Chatwork::Room.find(ENV['CHATWORK_MYCHAT_ID'])
+    expect(room.messages(force: 1).all? {|m| m.is_a? Chatwork::Message}).to be true
+  end
+
+  it '#message() can retrieve message according to chatroom' do
+    room = Chatwork::Room.find(ENV['CHATWORK_MYCHAT_ID'])
+    message = room.messages(force: 1).first
+    expect(room.message(message.message_id)).to be_instance_of Chatwork::Message
+  end
+
+  it '#members() can list members according to chatroom' do
+    room = Chatwork::Room.find(ENV['CHATWORK_MYCHAT_ID'])
+    expect(room.members().all? {|m| m.is_a? Chatwork::Member}).to be true
+  end
+
+  it '#files() can list files according to chatroom' do
+    room = Chatwork::Room.find(ENV['CHATWORK_MYCHAT_ID'])
+    expect(room.files().all? {|m| m.is_a? Chatwork::File}).to be true
+  end
+
+  it '#file() can retrieve file according to chatroom' do
+    room = Chatwork::Room.find(ENV['CHATWORK_MYCHAT_ID'])
+    file = room.files().first
+    expect(room.file(file.file_id)).to be_instance_of Chatwork::File
+  end
+
+  it '#tasks() can list tasks according to chatroom' do
+    room = Chatwork::Room.find(ENV['CHATWORK_MYCHAT_ID'])
+    expect(room.tasks().all? {|m| m.is_a? Chatwork::Task}).to be true
+  end
+
+  it '#task() can retrieve task according to chatroom' do
+    room = Chatwork::Room.find(ENV['CHATWORK_MYCHAT_ID'])
+    task = room.tasks().first
+    expect(room.task(task.task_id)).to be_instance_of Chatwork::Task
+  end
 end
