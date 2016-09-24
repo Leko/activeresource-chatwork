@@ -21,7 +21,7 @@ describe Chatwork::Task do
 
   it 'can retrieve belongs to room' do
     params = {params: {room_id: ENV['CHATWORK_MYCHAT_ID']}}
-    task = Chatwork::Task.find(Chatwork::Task.first(params).id, params)
+    task = Chatwork::Task.first(params)
 
     expect(task.room).to be_instance_of Chatwork::Room
   end

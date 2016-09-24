@@ -16,7 +16,7 @@ describe Chatwork::File do
 
   it 'can retrieve belongs to room' do
     params = {params: {room_id: ENV['CHATWORK_MYCHAT_ID']}}
-    file = Chatwork::File.find(Chatwork::File.first(params).id, params)
+    file = Chatwork::File.first(params)
 
     expect(file.room).to be_instance_of Chatwork::Room
   end
