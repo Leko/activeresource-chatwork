@@ -10,8 +10,9 @@ describe Chatwork::File do
   it 'can retrieve file from chatroom' do
     params = { params: { room_id: ENV['CHATWORK_MYCHAT_ID'] } }
     file = Chatwork::File.first(params)
+    file = Chatwork::File.find(file.id, params)
 
-    expect(Chatwork::File.find(file.id, params)).to be_instance_of Chatwork::File
+    expect(file).to be_instance_of Chatwork::File
   end
 
   it 'can retrieve belongs to room' do

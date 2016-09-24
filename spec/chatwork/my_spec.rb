@@ -7,6 +7,7 @@ describe Chatwork::My do
 
   it 'can list my status' do
     tasks = Chatwork::My.tasks(status: Chatwork::Task::STATUS_OPEN)
-    expect(tasks.all? { |t| t.is_a?(Chatwork::Task) && t.persisted? }).to be true
+    result = tasks.all? { |t| t.is_a?(Chatwork::Task) && t.persisted? }
+    expect(result).to be true
   end
 end
