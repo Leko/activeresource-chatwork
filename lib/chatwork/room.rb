@@ -5,7 +5,7 @@ module Chatwork
   end
 end
 
-Chatwork::Room.autoload :Message, 'room/message'
-Chatwork::Room.autoload :Member, 'room/member'
-Chatwork::Room.autoload :File, 'room/file'
-Chatwork::Room.autoload :Task, 'room/task'
+Chatwork::Room.autoload :Message, 'chatwork/room/message'
+Chatwork::Room.autoload :Member, 'chatwork/room/member'
+Chatwork::Room.autoload :File, 'chatwork/room/file'
+Chatwork::Room.autoload :Task, 'chatwork/room/task'
