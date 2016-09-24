@@ -1,5 +1,7 @@
 
 module Chatwork
+  # /my
+  # see http://developer.chatwork.com/ja/endpoint_my.html
   class My < Base
     self.collection_name = 'my'
 

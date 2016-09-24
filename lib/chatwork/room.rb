@@ -1,4 +1,6 @@
 module Chatwork
+  # /rooms
+  # see http://developer.chatwork.com/ja/endpoint_rooms.html
   class Room < Base
     ACTION_LEAVE = 'leave'.freeze
     ACTION_DELETE = 'delete'.freeze

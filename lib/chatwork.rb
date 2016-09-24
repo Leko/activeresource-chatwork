@@ -1,5 +1,6 @@
 require 'chatwork/version'
 
+# Define autoloads
 module Chatwork
   autoload :Base, 'chatwork/base'
   autoload :Contact, 'chatwork/contact'

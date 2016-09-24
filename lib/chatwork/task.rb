@@ -1,5 +1,7 @@
 
 module Chatwork
+  # /rooms/xxx/tasks
+  # see http://developer.chatwork.com/ja/endpoint_rooms.html
   class Task < Base
     include Chatwork::NestOfRoom
 
