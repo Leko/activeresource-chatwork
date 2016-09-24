@@ -13,7 +13,7 @@ module Chatwork
     include ActiveResource::Formats::JsonFormat
 
     def mime_type
-      "application/x-www-form-urlencoded"
+      'application/x-www-form-urlencoded'
     end
 
     def decode(json)
@@ -27,7 +27,7 @@ module Chatwork
   # APIキーの設定やフォーマッタの設定など、共通で必要な設定をここで行う
   # Chatwork APIを扱う際にはこのクラスを継承すること
   class Base < ActiveResource::Base
-    headers["X-ChatWorkToken"] = ENV['CHATWORK_TOKEN']
+    headers['X-ChatWorkToken'] = ENV['CHATWORK_TOKEN']
 
     self.site = 'https://api.chatwork.com/v1'
     self.format = FormToJsonParser.new
@@ -39,7 +39,7 @@ module Chatwork
              else
                super(options)
              end
-      hash = JSON.load(json)
+      hash = JSON.parse(json)
 
       URI.encode_www_form(hash)
     end

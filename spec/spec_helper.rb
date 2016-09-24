@@ -6,8 +6,8 @@ require 'simplecov'
 Dotenv.load
 
 SimpleCov.start do
-  add_filter "/vendor/"
-  add_filter "/spec/"
+  add_filter '/vendor/'
+  add_filter '/spec/'
 end
 
 # テスト用にロガーを差し込む

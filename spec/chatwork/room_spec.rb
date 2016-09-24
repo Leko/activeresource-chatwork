@@ -5,7 +5,7 @@ describe Chatwork::Room do
 
   it 'can list rooms according to chatroom' do
     rooms = Chatwork::Room.all
-    expect(rooms.all? {|r| r.is_a? Chatwork::Room}).to be true
+    expect(rooms.all? { |r| r.is_a? Chatwork::Room }).to be true
   end
 
   it 'can retrieve room from chatroom' do
@@ -13,7 +13,7 @@ describe Chatwork::Room do
   end
 
   it 'can create room to chatroom via .create' do
-    opts = {members_admin_ids: [ENV['CHATWORK_MY_ID']], name: 'xxx', icon_preset: Chatwork::Room::ICON_GROUP}
+    opts = { members_admin_ids: [ENV['CHATWORK_MY_ID']], name: 'xxx', icon_preset: Chatwork::Room::ICON_GROUP }
     room = Chatwork::Room.create(opts)
     expect(room).to be_instance_of Chatwork::Room
   end
@@ -34,7 +34,7 @@ describe Chatwork::Room do
 
   it '#messages() can list messages according to chatroom' do
     room = Chatwork::Room.find(ENV['CHATWORK_MYCHAT_ID'])
-    expect(room.messages(force: 1).all? {|m| m.is_a? Chatwork::Message}).to be true
+    expect(room.messages(force: 1).all? { |m| m.is_a? Chatwork::Message }).to be true
   end
 
   it '#message() can retrieve message according to chatroom' do
@@ -45,28 +45,28 @@ describe Chatwork::Room do
 
   it '#members() can list members according to chatroom' do
     room = Chatwork::Room.find(ENV['CHATWORK_MYCHAT_ID'])
-    expect(room.members().all? {|m| m.is_a? Chatwork::Member}).to be true
+    expect(room.members.all? { |m| m.is_a? Chatwork::Member }).to be true
   end
 
   it '#files() can list files according to chatroom' do
     room = Chatwork::Room.find(ENV['CHATWORK_MYCHAT_ID'])
-    expect(room.files().all? {|m| m.is_a? Chatwork::File}).to be true
+    expect(room.files.all? { |m| m.is_a? Chatwork::File }).to be true
   end
 
   it '#file() can retrieve file according to chatroom' do
     room = Chatwork::Room.find(ENV['CHATWORK_MYCHAT_ID'])
-    file = room.files().first
+    file = room.files.first
     expect(room.file(file.id)).to be_instance_of Chatwork::File
   end
 
   it '#tasks() can list tasks according to chatroom' do
     room = Chatwork::Room.find(ENV['CHATWORK_MYCHAT_ID'])
-    expect(room.tasks().all? {|m| m.is_a? Chatwork::Task}).to be true
+    expect(room.tasks.all? { |m| m.is_a? Chatwork::Task }).to be true
   end
 
   it '#task() can retrieve task according to chatroom' do
     room = Chatwork::Room.find(ENV['CHATWORK_MYCHAT_ID'])
-    task = room.tasks().first
+    task = room.tasks.first
     expect(room.task(task.id)).to be_instance_of Chatwork::Task
   end
 end
