@@ -1,25 +1,30 @@
 require 'spec_helper'
 
 describe Chatwork::Room do
-  it 'has autoload about Chatwork::Room::Member' do
-    expect(Chatwork::Room::Member).not_to be nil
+  room = nil
+
+  it 'can list rooms according to chatroom' do
+    rooms = Chatwork::Room.all
+    expect(rooms.all? {|r| r.is_a? Chatwork::Room}).to be true
   end
 
-  it 'has autoload about Chatwork::Room::Message' do
-    expect(Chatwork::Room::Message).not_to be nil
+  it 'can retrieve room from chatroom' do
+    expect(Chatwork::Room.find(ENV['CHATWORK_MYCHAT_ID'])).to be_instance_of Chatwork::Room
   end
 
-  it 'has autoload about Chatwork::Room::Task' do
-    expect(Chatwork::Room::Task).not_to be nil
+  it 'can create room to chatroom via .create' do
+    opts = {members_admin_ids: [ENV['CHATWORK_MY_ID']], name: 'xxx', icon_preset: Chatwork::Room::ICON_GROUP}
+    room = Chatwork::Room.create(opts)
+    expect(room).to be_instance_of Chatwork::Room
   end
 
-  it 'has autoload about Chatwork::Room::File' do
-    expect(Chatwork::Room::File).not_to be nil
+  it 'can update room according to chatroom' do
+    room.name = room.name + 'xxx'
+    expect(room.save).to be true
   end
 
-  it 'can list rooms according to chatroom'
-  it 'can retrieve room from chatroom'
-  it 'can create room to chatroom'
-  it 'can update room according to chatroom'
-  it 'can delete room according to chatroom'
+  it 'can delete room according to chatroom' do
+    result = Chatwork::Room.delete(room.id, action_type: Chatwork::Room::ACTION_DELETE)
+    expect(result).to be_instance_of Net::HTTPNoContent
+  end
 end
