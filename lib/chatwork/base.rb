@@ -29,7 +29,7 @@ module Chatwork
   class Base < ActiveResource::Base
     headers['X-ChatWorkToken'] = ENV['CHATWORK_TOKEN']
 
-    self.site = 'https://api.chatwork.com/v1'
+    self.site = 'https://api.chatwork.com/v2'
     self.format = FormToJsonParser.new
     self.include_format_in_path = false
 
