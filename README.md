@@ -142,6 +142,18 @@ room = Chatwork::Room.find xxx
 file = room.file(yyy)
 ```
 
+### Incoming requests
+```ruby
+# GET /v2/incoming_requests
+requests = Chatwork::IncomingRequest.all
+
+# PUT /v2/incoming_requests/xxx
+requests = Chatwork::IncomingRequest.first
+requests.save
+
+# PUT /v2/incoming_requests/xxx
+Chatwork::IncomingRequest.delete(request.id)
+```
 
 ## Development
 
