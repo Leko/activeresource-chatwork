@@ -30,28 +30,28 @@ ENV['CHATWORK_TOKEN'] = 'YOUR_CHATWORK_API_TOKEN'
 
 ### Contacts
 ```ruby
-# GET /v1/contacts
+# GET /v2/contacts
 contacts = Chatwork::Contact.all
 ```
 
 ### My
 ```ruby
-# GET /v1/my/status
+# GET /v2/my/status
 status = Chatwork::My.status
 
-# GET /v1/my/tasks?status=open
+# GET /v2/my/tasks?status=open
 tasks = Chatwork::My.tasks status: Chatwork::Task::STATUS_OPEN
 ```
 
 ### Rooms
 ```ruby
-# GET /v1/rooms
+# GET /v2/rooms
 rooms = Chatwork::Room.all
 
-# GET /v1/rooms/xxx
+# GET /v2/rooms/xxx
 room = Chatwork::Room.find xxx
 
-# POST /v1/rooms
+# POST /v2/rooms
 params = {
   name: 'xxx',
   members_admin_ids: [yyy],
@@ -60,32 +60,32 @@ params = {
 }
 room = Chatwork::Room.create params
 
-# PUT /v1/rooms/xxx
+# PUT /v2/rooms/xxx
 room.name = 'xxx'
 room.save
 
-# DELETE /v1/rooms/xxx
+# DELETE /v2/rooms/xxx
 # show all action constants -> Chatwork::Room.constants.grep(/ACTION_/)
 Chatwork::Room.delete(room.id, action_type: Chatwork::Room::ACTION_DELETE)
 ```
 
 ### Messages
 ```ruby
-# GET /v1/rooms/xxx/messages
+# GET /v2/rooms/xxx/messages
 params = {params: {force: 1, room_id: xxx}}
 messages = Chatwork::Message.all params
 # or
 room = Chatwork::Room.find xxx
 messages = room.messages
 
-# GET /v1/rooms/xxx/messages/yyy
+# GET /v2/rooms/xxx/messages/yyy
 params = {params: {room_id: xxx}}
 message = Chatwork::Message.find yyy, params
 # or
 room = Chatwork::Room.find xxx
 message = room.message yyy
 
-# POST /v1/rooms/xxx/messages
+# POST /v2/rooms/xxx/messages
 message = Chatwork::Message.new body: 'yyy'
 message.prefix_options[:room_id] = xxx
 message.save
@@ -93,34 +93,34 @@ message.save
 
 ### Members
 ```ruby
-# GET /v1/rooms/xxx/members
+# GET /v2/rooms/xxx/members
 params = {params: {room_id: xxx}}
 members = Chatwork::Member.all params
 # or
 room = Chatwork::Room.find xxx
 members = room.members
 
-# PUT /v1/rooms/xxx/members
+# PUT /v2/rooms/xxx/members
 room = Chatwork::Room.find xxx
 room.update_members members_admin_ids: [yyy, zzz].join(',')
 ```
 
 ### Tasks
 ```ruby
-# GET /v1/rooms/xxx/tasks
+# GET /v2/rooms/xxx/tasks
 tasks = Chatwork::Contact.all
 # or
 room = Chatwork::Room.find xxx
 tasks = room.tasks
 
-# GET /v1/rooms/xxx/tasks/yyy
+# GET /v2/rooms/xxx/tasks/yyy
 params = { params: { room_id: xxx } }
 tasks = Chatwork::Task.all params
 # or
 room = Chatwork::Room.find xxx
 task = room.task(yyy)
 
-# POST /v1/rooms/xxx/tasks
+# POST /v2/rooms/xxx/tasks
 task = Chatwork::Task.new(body: 'some task', to_ids: [yyy, zzz])
 task.prefix_options[:room_id] = xxx
 task.save
@@ -128,14 +128,14 @@ task.save
 
 ### Files
 ```ruby
-# GET /v1/rooms/xxx/files
+# GET /v2/rooms/xxx/files
 params = { params: { room_id: xxx } }
 files = Chatwork::File.all params
 # or
 room = Chatwork::Room.find xxx
 files = room.files
 
-# GET /v1/rooms/xxx/files/yyy
+# GET /v2/rooms/xxx/files/yyy
 file = Chatwork::Contact.all
 # or
 room = Chatwork::Room.find xxx
