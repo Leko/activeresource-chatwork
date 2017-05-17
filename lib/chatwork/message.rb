@@ -5,7 +5,7 @@ module Chatwork
   class Message < Base
     include Chatwork::NestOfRoom
 
-    self.prefix = '/v1/rooms/:room_id/'
+    self.prefix = '/v2/rooms/:room_id/'
     self.collection_name = 'messages'
     self.primary_key = 'message_id'
   end
